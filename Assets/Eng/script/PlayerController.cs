@@ -6,8 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] Rigidbody2D _rb;
-    [SerializeField] float _speed = 5f;
-    [SerializeField] float _lifeTime = 5f;
+    [SerializeField] float speed = 5f;
 
 
     
@@ -26,11 +25,6 @@ public class PlayerController : MonoBehaviour
     private void OnMovement(InputValue val)
     {
         Vector2 Mov = val.Get<Vector2>();
-        _rb.velocity = Mov * _speed;
-    }
-
-    private void OnShoot()
-    {
-
+        _rb.velocity = Mov * speed;
     }
 }
