@@ -2,10 +2,12 @@ Shader "Unlit/Water"
 {
     Properties
     {
+        _MainTex ("Texture", 2D) = "white" {}
         _VoronoiTex ("Voronoi Texture", 2D) = "white" {}
         _BaseColor ("Color", Color) = (0,0,0,1)
         _Intensity ("Intensity", Float) = .5
         _Size ("Size", Float) = 1
+        _UseTexture ("Use Texture", Range(0,1)) = 0
     }
     SubShader
     {
@@ -35,9 +37,9 @@ Shader "Unlit/Water"
                 float4 vertex : SV_POSITION;
             };
 
-            sampler2D _VoronoiTex;
+            sampler2D _MainTex, _VoronoiTex;
             float4 _BaseColor;
-            float _Intensity, _Size;
+            float _Intensity, _Size, _UseTexture;
 
             Interpolators vert (MeshData v)
             {
@@ -59,7 +61,7 @@ Shader "Unlit/Water"
             fixed4 frag (Interpolators i) : SV_Target
             {
                 float size = 1;
-                fixed4 col = _BaseColor;
+                fixed4 col = (1-_UseTexture)*_BaseColor + _UseTexture*tex2D(_MainTex, i.uv);
                 float Caustics =  0;
                 Caustics +=            Layer(Waveform(i.uv * 1.75 * _Size + float2(_Time.x, 0), float3(0.5, 5, 0.2)));
                 Caustics +=       .4 * Layer(Waveform(i.uv * 1.2  * _Size + float2(_Time.x*.5, _Time.x*.5), float3(0.1, 5, 0.4)));
