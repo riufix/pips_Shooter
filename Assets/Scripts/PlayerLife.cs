@@ -3,10 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerLife : MonoBehaviour
 {
     [SerializeField] Slider _lifeSlider;
+    [SerializeField] TMP_Text _lifepercent;
 
     [SerializeField] int _life = 100;
     [SerializeField] bool _isDead = false;
@@ -14,7 +16,7 @@ public class PlayerLife : MonoBehaviour
 
     void Start()
     {
-        
+        _lifepercent.text = _life.ToString();
     }
 
     void Update()
@@ -22,11 +24,12 @@ public class PlayerLife : MonoBehaviour
         
     }
 
-    private void takeDamage(int amount)
+    public void takeDamage(int amount)
     {
         if (!_isDead)
         {
             _life -= amount;
+            _lifepercent.text = _life.ToString();
             _lifeSlider.value = _life;
         }
         else
