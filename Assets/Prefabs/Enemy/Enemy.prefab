@@ -47,7 +47,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemy: {fileID: 0}
-  _spriteTransform: {fileID: 8482214863271605728}
+  _sr: {fileID: 1251091047857580597}
+  _enableRange: 20
 --- !u!50 &8172042713464024923
 Rigidbody2D:
   serializedVersion: 4

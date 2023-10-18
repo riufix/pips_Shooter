@@ -8,8 +8,6 @@ using static UnityEngine.InputSystem.InputAction;
 
 public class PlayerController : MonoBehaviour
 {
-    public static GameObject player;
-
     [SerializeField] Rigidbody2D _rb;
     [SerializeField] Transform _firePoint;
     [SerializeField] GameObject _bulletprefab;
@@ -28,8 +26,6 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = this.gameObject;
-
         _rb = GetComponent<Rigidbody2D>();
 
         _mouse.action.started += OnShoot;

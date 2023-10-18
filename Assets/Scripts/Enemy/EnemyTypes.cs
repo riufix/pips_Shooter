@@ -19,7 +19,10 @@ public class EnemyTypes : ScriptableObject
     [SerializeField] private int _hp;
     [SerializeField] private MovementType _movementType;
     [SerializeField] private bool _shoot;
-    [SerializeField, DisableIf(nameof(_shoot))] private EnemyProj _projectile;
+    [SerializeField, EnableIf(nameof(_shoot))] private GameObject _projectile;
+    [SerializeField, EnableIf(nameof(_shoot))] private float _shootDelay;
+    [SerializeField, EnableIf(nameof(_shoot))] private float _shotSpeed;
+
     [SerializeField] private Sprite _sprite;
     [SerializeField] private float _moveSpeed;
     [SerializeField, EnableIf(nameof(IsSin))] private float _sineAmplitude;
@@ -31,6 +34,10 @@ public class EnemyTypes : ScriptableObject
 
     public int Hp { get => _hp;}
     public bool Shoot { get => _shoot;}
+    public Sprite Sprite { get => _sprite;}
+    public GameObject Projectile { get => _projectile; set => _projectile = value; }
+    public float ShootDelay { get => _shootDelay;}
+    public float ShotSpeed { get => _shotSpeed;}
 
     public void Movement(Rigidbody2D rb, Transform target = null){
         switch (_movementType)
