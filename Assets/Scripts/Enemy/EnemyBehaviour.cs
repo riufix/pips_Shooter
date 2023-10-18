@@ -16,13 +16,10 @@ public class EnemyBehaviour : MonoBehaviour
 
     private Transform _playerTransform;
 
-    private int _maxHp;
-    private int _hp;
+    public EnemyTypes Enemy { get => _enemy;}
 
     private void Awake() {
         _sr.sprite = _enemy.Sprite;
-        _maxHp = _enemy.Hp;
-        _hp = _maxHp;
         _rb = transform.GetComponent<Rigidbody2D>();
     }
     private void Start() {
