@@ -25,10 +25,14 @@ public class EnemyTypes : ScriptableObject
 
     [SerializeField] private Sprite _sprite;
     [SerializeField] private float _moveSpeed;
+
+
+    [SerializeField, EnableIf(nameof(IsHoming))] private float _rotationSpeed;
     [SerializeField, EnableIf(nameof(IsSin))] private float _sineAmplitude;
     [SerializeField, EnableIf(nameof(IsSin))] private float _sineFrequency;
 
     bool IsSin => _movementType == MovementType.Sinusoid;
+    bool IsHoming => _movementType == MovementType.Homing;
 
     float _time = 0;
 
@@ -49,7 +53,7 @@ public class EnemyTypes : ScriptableObject
                 Still(rb);
                 break;
             case MovementType.Homing:
-                Homing(rb, target);
+                Homing(rb);
                 break;
             case MovementType.Sinusoid:
                 Sinusoid(rb);
@@ -66,8 +70,14 @@ public class EnemyTypes : ScriptableObject
         rb.velocity = new Vector2(0,0);
     }
 
-    private void Homing(Rigidbody2D rb, Transform target){
+    private void Homing(Rigidbody2D rb){
+        Vector2 direction = PlayerSingleton.Instance.transform.position - rb.transform.position;
+        direction.Normalize();
 
+        float rotate = Vector3.Cross(direction, rb.transform.up).z;
+        rb.angularVelocity = -rotate * _rotationSpeed;
+
+        rb.velocity = rb.transform.up * _moveSpeed;
     }
 
     private void Sinusoid(Rigidbody2D rb){

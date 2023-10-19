@@ -7,7 +7,7 @@ using UnityEngine;
 public class EnemyBehaviour : MonoBehaviour
 {
     [SerializeField, Expandable] private EnemyTypes _enemy;
-    [SerializeField] private SpriteRenderer _sr;
+    [SerializeField] private SpriteRenderer _spriteRenderer;
 
     [SerializeField] private float _enableRange;
     private bool _isEnabled = false;
@@ -19,19 +19,24 @@ public class EnemyBehaviour : MonoBehaviour
     public EnemyTypes Enemy { get => _enemy;}
 
     private void Awake() {
-        _sr.sprite = _enemy.Sprite;
+        _spriteRenderer.sprite = _enemy.Sprite;
         _rb = transform.GetComponent<Rigidbody2D>();
     }
+
     private void Start() {
         _playerTransform = PlayerSingleton.Instance.transform;
     }
+
     private void FixedUpdate() {
         if(_isEnabled){
             if(_enemy.Shoot && !_shooting) StartCoroutine(Shoot());
 
             _enemy.Movement(_rb);
+
             float angle = Vector3.SignedAngle(Vector3.down, _rb.velocity, Vector3.forward);
-            _sr.transform.rotation = Quaternion.Euler(0,0,angle);
+            _spriteRenderer.transform.rotation = Quaternion.Euler(0,0,angle);
+
+            Destroy(gameObject, 7);
         }
         else{
             if(Mathf.Abs(_playerTransform.position.y - transform.position.y) <= _enableRange ){

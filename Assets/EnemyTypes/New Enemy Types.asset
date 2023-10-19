@@ -13,10 +13,13 @@ MonoBehaviour:
   m_Name: New Enemy Types
   m_EditorClassIdentifier: 
   _hp: 0
-  _movementType: 0
+  _movementType: 3
   _shoot: 1
-  _projectile: {fileID: 2083606847758335267, guid: 6b6b4699b9d8316408cb987c60e63e7d, type: 3}
+  _projectile: {fileID: 0}
+  _shootDelay: 0
+  _shotSpeed: 0
   _sprite: {fileID: -9095717837082945937, guid: bd3cb4af8406d4436a2ae8c2aafe1f8d, type: 3}
   _moveSpeed: 5
+  _rotationSpeed: 0
   _sineAmplitude: 0
   _sineFrequency: 0
