@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using NaughtyAttributes;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 [RequireComponent(typeof(Animator))]
 public class BossFSM : MonoBehaviour
@@ -18,14 +19,23 @@ public class BossFSM : MonoBehaviour
     private STATES _state;
     [SerializeField] private List<STATES> _playlist = new List<STATES>();
     private int _counter = 0;
-    
-    [Header("Animator Setup, pas toucher")]
-    [SerializeField] private Animator _anim;
-    [SerializeField, AnimatorParam("_anim")]private string _rightClawAtkTrigger;
-    [SerializeField, AnimatorParam("_anim")]private string _leftClawAtkTrigger;
-    [SerializeField, AnimatorParam("_anim")]private string _bubbleAtkTrigger;
-    [SerializeField, AnimatorParam("_anim")]private string _crabSpawnTrigger;
-    [SerializeField, AnimatorParam("_anim")]private string _rayAtkTrigger;
+
+    [SerializeField, Foldout("Rayons")] private GameObject _rayon;
+    [SerializeField, Foldout("Rayons")] private List<Transform> _transformRayons;
+    [SerializeField, Foldout("Rayons")] private AnimationCurve _aimingCurve;
+    [SerializeField, Foldout("Rayons")] private float _startAngle;
+    [SerializeField, Foldout("Rayons")] private float _rayDuration;
+
+    [SerializeField, Foldout("BulletGen Setup")] private BulletGenerator _bulletGen;
+    [SerializeField, Foldout("BulletGen Setup")] private Pattern _crabPattern;
+    [SerializeField, Foldout("BulletGen Setup")] private Pattern _bubblePattern;
+
+    [SerializeField, Foldout("Animator Setup, pas toucher")] private Animator _anim;
+    [SerializeField, Foldout("Animator Setup, pas toucher"), AnimatorParam("_anim")]private string _rightClawAtkTrigger;
+    [SerializeField, Foldout("Animator Setup, pas toucher"), AnimatorParam("_anim")]private string _leftClawAtkTrigger;
+    [SerializeField, Foldout("Animator Setup, pas toucher"), AnimatorParam("_anim")]private string _bubbleAtkTrigger;
+    [SerializeField, Foldout("Animator Setup, pas toucher"), AnimatorParam("_anim")]private string _crabSpawnTrigger;
+    [SerializeField, Foldout("Animator Setup, pas toucher"), AnimatorParam("_anim")]private string _rayAtkTrigger;
 
 
     private int Counter { get => _counter; set => _counter = value%_playlist.Count; }
@@ -53,7 +63,7 @@ public class BossFSM : MonoBehaviour
     }
 
     private void Bubbles(){
-        //Tire les bulles dans une coroutine et joue la bonne anim
+        //Tire les bulles avec le bulletGen et joue la bonne anim
     }
 
     private void Crabs(){
@@ -61,7 +71,31 @@ public class BossFSM : MonoBehaviour
     }
 
     private void Ray(){
-        //Tire un spawner de Rayon parmis ceux rentre et joue l'anim
+        Transform spawner = _transformRayons[Random.Range(0, _transformRayons.Count)];
+        float angle = _startAngle*Mathf.Sign(spawner.position.x);
+
+        GameObject raySave = Instantiate(_rayon, spawner);
+        raySave.transform.eulerAngles = new Vector3(0f,0f,angle);
+        Debug.Log(raySave.transform.eulerAngles);
+
+        StartCoroutine(Ciblage());
+        
+        IEnumerator Ciblage(){
+            float maxAngle = Vector2.SignedAngle(Vector2.up, spawner.position - PlayerSingleton.Instance.transform.position) - angle;
+            float timer = 0f;
+
+            while (timer < _rayDuration){
+                float w = maxAngle*_aimingCurve.Evaluate(timer/_rayDuration);
+                timer += Time.deltaTime;
+                raySave.transform.eulerAngles = new Vector3(0f,0f,w + angle);
+                yield return 0;
+            }
+
+            raySave.transform.eulerAngles = new Vector3(0f,0f,maxAngle + angle);
+            Destroy(raySave);
+            yield return new WaitForSeconds(1);
+            EndState();
+        }
     }
 
     #endregion
