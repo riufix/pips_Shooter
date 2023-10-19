@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hp: 3
   _movementType: 0
-  _shoot: 1
+  _shoot: 0
   _projectile: {fileID: 7062517768860613257, guid: 6b6b4699b9d8316408cb987c60e63e7d, type: 3}
   _shootDelay: 3
   _shotSpeed: 3
