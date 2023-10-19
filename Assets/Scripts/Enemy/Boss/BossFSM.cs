@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using NaughtyAttributes;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
@@ -9,23 +10,25 @@ public class BossFSM : MonoBehaviour
     private enum STATES{
         IDLE = 0,
         CLAWS = 1,
-        BUBLES = 2,
+        BUBBLES = 2,
         CRABS = 3,
         RAY = 4,
     }
 
-    private Animator _anim;
-
-    [SerializeField]
     private STATES _state;
     [SerializeField] private List<STATES> _playlist = new List<STATES>();
     private int _counter = 0;
+    
+    [Header("Animator Setup, pas toucher")]
+    [SerializeField] private Animator _anim;
+    [SerializeField, AnimatorParam("_anim")]private string _rightClawAtkTrigger;
+    [SerializeField, AnimatorParam("_anim")]private string _leftClawAtkTrigger;
+    [SerializeField, AnimatorParam("_anim")]private string _bubbleAtkTrigger;
+    [SerializeField, AnimatorParam("_anim")]private string _crabSpawnTrigger;
+    [SerializeField, AnimatorParam("_anim")]private string _rayAtkTrigger;
+
 
     private int Counter { get => _counter; set => _counter = value%_playlist.Count; }
-
-    private void Awake() {
-        _anim = GetComponent<Animator>();
-    }
 
     private void Start() {
         if (_playlist.Count != 0) _state = _playlist[0];
@@ -49,7 +52,7 @@ public class BossFSM : MonoBehaviour
         //Tire une pince au hasard puis joue la bonne anim
     }
 
-    private void Bubles(){
+    private void Bubbles(){
         //Tire les bulles dans une coroutine et joue la bonne anim
     }
 
@@ -73,8 +76,8 @@ public class BossFSM : MonoBehaviour
             case STATES.CLAWS:
                 Claws();
                 break;
-            case STATES.BUBLES:
-                Bubles();
+            case STATES.BUBBLES:
+                Bubbles();
                 break;
             case STATES.CRABS:
                 Crabs();
