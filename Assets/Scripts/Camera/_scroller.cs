@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class _scroller : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] Rigidbody2D _rb;
+    [SerializeField] float _scrollSpeed = 1.0f;
+
     void Start()
     {
-        
+        _rb = GetComponent<Rigidbody2D>();
+        _rb.velocity = new Vector2(0 ,_scrollSpeed);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (PlayerLife.Instance.IsDead)
+        {
+            _rb.velocity = Vector2.zero;
+        }
     }
 }

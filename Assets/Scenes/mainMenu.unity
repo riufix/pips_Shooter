@@ -155,7 +155,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b875aade034411343b93a03960ee2a58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playScene: Eng
   _pauseMenu: {fileID: 0}
+  _ispauseActive: 0
 --- !u!114 &162604721
 MonoBehaviour:
   m_ObjectHideFlags: 0
