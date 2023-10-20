@@ -549,7 +549,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b875aade034411343b93a03960ee2a58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playScene: mainMenu
+  _playScene: FerdiLD
+  _retryScene: FerdiLD
+  _mainMenuScene: mainMenu
   _pauseMenu: {fileID: 5431693202904651135}
   _gameOverMenu: {fileID: 7632275216256076022}
   _canBeActive: 0
