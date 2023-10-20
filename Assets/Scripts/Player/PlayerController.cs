@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour
     private void OnMovement(CallbackContext ctx)
     {
         Vector2 Mov = _movement.action.ReadValue<Vector2>();
-        _rb.velocity = Mov * _speed + new Vector2(0,3);
+        _rb.velocity = Mov * _speed + new Vector2(0,3);         //Vitesse du joueur
         if (_slowed) _rb.velocity /= _slowForce;
     }   
 

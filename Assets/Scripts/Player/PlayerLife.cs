@@ -30,14 +30,10 @@ public class PlayerLife : MonoBehaviour
 
     public void takeDamage(int amount)
     {
-        if (!_isDead)
-        {
-            _life -= amount;
-            _lifepercent.text = _life.ToString();
-            _lifeSlider.value = _life;
-        }
-        else
-            return;
+        _life -= amount;
+        _lifepercent.text = _life.ToString();
+        _lifeSlider.value = _life;
+        if (_life<=0) _isDead = true;
     }
 
     [Button ("takeDmg")]

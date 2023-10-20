@@ -18,7 +18,7 @@ MonoBehaviour:
   _projectile: {fileID: 0}
   _shootDelay: 0
   _shotSpeed: 0
-  _sprite: {fileID: -5177388603050735206, guid: 71ebafeef3c03457483266a33ab2b270, type: 3}
+  _sprite: {fileID: 21300000, guid: 536c0352072ba0e4781363bf390765df, type: 3}
   _moveSpeed: 6
   _rotationSpeed: 200
   _sineAmplitude: 0

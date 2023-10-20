@@ -19,7 +19,7 @@ MonoBehaviour:
   _shootDelay: 2
   _shotSpeed: 3
   _sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-  _moveSpeed: 0
+  _moveSpeed: 3
   _rotationSpeed: 0
   _sineAmplitude: 5
   _sineFrequency: 3

@@ -12,6 +12,7 @@ public class Projectile : MonoBehaviour
         if (other.tag == "Enemy"){
             _onHit.Invoke();
             other.SendMessage("TakeDamage", _hitDmg);
+            Destroy(gameObject);
         }
     }
 }
