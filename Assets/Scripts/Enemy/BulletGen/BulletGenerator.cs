@@ -23,9 +23,9 @@ public class BulletGenerator : MonoBehaviour
             }
             for(int i = 0; i < pattern.NumberProjectile; i++){
                 Vector2 direction = new Vector2(Mathf.Sin(angle*Mathf.PI/180),Mathf.Cos(angle*Mathf.PI/180));
-                EnemyProj projSave = Instantiate(pattern.Projectile, transform).GetComponent<EnemyProj>();
-                projSave.Direction = direction;
-                projSave.Speed = pattern.ProjectileSpeed;
+                Rigidbody2D projSave = Instantiate(pattern.Projectile, transform).GetComponent<Rigidbody2D>();
+                projSave.velocity = direction* pattern.ProjectileSpeed;
+                projSave.transform.eulerAngles = new Vector3(0,0,Vector2.SignedAngle(Vector2.up, projSave.velocity));
                 if(pattern.ProjectileDelay > 0){
                     yield return new WaitForSeconds(pattern.ProjectileDelay);
                 }

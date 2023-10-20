@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class PlayerLife : MonoBehaviour
 {
@@ -13,15 +14,18 @@ public class PlayerLife : MonoBehaviour
     [SerializeField] int _life = 100;
     [SerializeField] bool _isDead = false;
 
+    public static PlayerLife Instance;
+
+    public bool IsDead { get => _isDead; }
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     void Start()
     {
         _lifepercent.text = _life.ToString();
-    }
-
-    void Update()
-    {
-        
     }
 
     public void takeDamage(int amount)
