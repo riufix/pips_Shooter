@@ -549,7 +549,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b875aade034411343b93a03960ee2a58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playScene: mainMenu
+  _playScene: FerdiLD
+  _retryScene: FerdiLD
+  _mainMenuScene: mainMenu
   _pauseMenu: {fileID: 5431693202904651135}
   _gameOverMenu: {fileID: 7632275216256076022}
   _canBeActive: 0
@@ -1595,13 +1597,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2725156239139123988}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 7019042764103328735}
+        m_TargetAssemblyTypeName: UImanager, Assembly-CSharp
+        m_MethodName: retry
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
