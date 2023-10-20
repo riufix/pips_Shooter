@@ -3,6 +3,7 @@ Shader "Unlit/Scrolling"
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
+        _Speed ("Speed", Float) = 1
     }
     SubShader
     {
@@ -30,6 +31,7 @@ Shader "Unlit/Scrolling"
             };
 
             sampler2D _MainTex;
+            float _Speed;
 
             v2f vert (appdata v)
             {
@@ -42,7 +44,7 @@ Shader "Unlit/Scrolling"
             fixed4 frag (v2f i) : SV_Target
             {
                 // sample the texture
-                fixed4 col = tex2D(_MainTex, float2(i.uv.x, i.uv.y+_Time.x));
+                fixed4 col = tex2D(_MainTex, float2(i.uv.x, i.uv.y+(_Time.y*_Speed)));
                 return col;
             }
             ENDCG
