@@ -25,6 +25,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void Start() {
         _playerTransform = PlayerSingleton.Instance.transform;
+        transform.eulerAngles = new Vector3(0f,0f,180f);
     }
 
     private void FixedUpdate() {
