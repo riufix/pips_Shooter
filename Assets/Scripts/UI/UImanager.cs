@@ -33,6 +33,7 @@ public class UImanager : MonoBehaviour
         {
             _pauseMenu.SetActive(true);
             _canBeActive = false;
+            Time.timeScale = 0f;
         }
 
         if(PlayerLife.Instance.IsDead)
@@ -52,6 +53,7 @@ public class UImanager : MonoBehaviour
     {
         _pauseMenu.SetActive(false);
         _canBeActive = true;
+        Time.timeScale = 1f;
     }
 
     public void mainMenu()
