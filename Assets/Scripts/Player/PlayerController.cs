@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float _bulletSpeed = 5f;
     [SerializeField] float _shootDelay = .5f;
 
-
     [SerializeField] InputActionReference _shoot;
     [SerializeField] InputActionReference _movement;
 
@@ -30,6 +29,7 @@ public class PlayerController : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
         _movement.action.performed += OnMovement;
         _movement.action.canceled += OnMovement;
+        OnMovement(new());
     }
 
     private void OnDestroy()
@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour
     private void OnMovement(CallbackContext ctx)
     {
         Vector2 Mov = _movement.action.ReadValue<Vector2>();
-        _rb.velocity = Mov * _speed;
+        _rb.velocity = Mov * _speed + new Vector2(0,3);
         if (_slowed) _rb.velocity /= _slowForce;
     }   
 

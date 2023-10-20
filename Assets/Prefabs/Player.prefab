@@ -196,9 +196,8 @@ MonoBehaviour:
   _bulletprefab: {fileID: 8890577930596518284, guid: e5413bdf71b60484582b0c9fdc8ef2fe, type: 3}
   _speed: 5
   _lifeTime: 5
-  _bulletDmg: 2
   _bulletSpeed: 5
-  _isPressed: 0
+  _shootDelay: 0.5
   _shoot: {fileID: -4740511468619471897, guid: 5bceb4872a15cba4eb25c637d1e73934, type: 3}
   _movement: {fileID: -5771556431192907632, guid: 5bceb4872a15cba4eb25c637d1e73934, type: 3}
 --- !u!114 &1249441079052710789
