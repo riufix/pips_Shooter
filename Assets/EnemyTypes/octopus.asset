@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c5690af7f3dd5ec4d9989136c58f5a55, type: 3}
-  m_Name: clam
+  m_Name: octopus
   m_EditorClassIdentifier: 
-  _hp: 3
-  _movementType: 1
-  _shoot: 1
-  _projectile: {fileID: 7062517768860613257, guid: 6b6b4699b9d8316408cb987c60e63e7d, type: 3}
-  _shootDelay: 1
-  _shotSpeed: 1
-  _sprite: {fileID: 2747690628134850419, guid: b670ab75dde984907b8570040daa08c5, type: 3}
-  _moveSpeed: 0
-  _rotationSpeed: 0
+  _hp: 2
+  _movementType: 2
+  _shoot: 0
+  _projectile: {fileID: 0}
+  _shootDelay: 0
+  _shotSpeed: 0
+  _sprite: {fileID: -5177388603050735206, guid: 71ebafeef3c03457483266a33ab2b270, type: 3}
+  _moveSpeed: 6
+  _rotationSpeed: 200
   _sineAmplitude: 0
   _sineFrequency: 0
