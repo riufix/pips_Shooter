@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a9616e3e3ccec140967bb4328646219, type: 3}
-  m_Name: Bubbles
+  m_Name: grossebulles 1
   m_EditorClassIdentifier: 
-  _projectile: {fileID: 0}
-  _numberProjectile: 0
-  _projectileSpeed: 0
-  _projectileDelay: 0
+  _projectile: {fileID: 6092331479846009992, guid: 28ebc1bfb9500f341836f8a8150035ea, type: 3}
+  _numberProjectile: 2
+  _projectileSpeed: 5
+  _projectileDelay: 0.5
   _projectileAngle: 0
-  _projectileAngleOffset: 0
+  _projectileAngleOffset: 180
   _compositePattern: []
