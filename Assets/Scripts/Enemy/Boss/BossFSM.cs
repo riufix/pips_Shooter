@@ -35,7 +35,7 @@ public class BossFSM : MonoBehaviour
     [SerializeField, Foldout("Animator Setup, pas toucher"), AnimatorParam("_anim")]private string _leftClawAtkTrigger;
     [SerializeField, Foldout("Animator Setup, pas toucher"), AnimatorParam("_anim")]private string _bubbleAtkTrigger;
     [SerializeField, Foldout("Animator Setup, pas toucher"), AnimatorParam("_anim")]private string _crabSpawnTrigger;
-    [SerializeField, Foldout("Animator Setup, pas toucher"), AnimatorParam("_anim")]private string _rayAtkTrigger;
+    [SerializeField, Foldout("Animator Setup, pas toucher")] private List<string> _rayAtkTrigger = new List<string>();
 
 
     private int Counter { get => _counter; set => _counter = value%_playlist.Count; }
@@ -91,20 +91,23 @@ public class BossFSM : MonoBehaviour
     }
 
     private void Ray(){
-        _anim.SetTrigger(_rayAtkTrigger);
+        int ray = Random.Range(0, _transformRayons.Count);
+        _anim.SetTrigger(_rayAtkTrigger[ray]);
+        Transform spawner = _transformRayons[ray];
 
-        Transform spawner = _transformRayons[Random.Range(0, _transformRayons.Count)];
         float angle = _startAngle*Mathf.Sign(spawner.position.x);
 
-        GameObject raySave = Instantiate(_rayon, spawner);
-        raySave.transform.eulerAngles = new Vector3(0f,0f,angle);
-        Debug.Log(raySave.transform.eulerAngles);
 
         StartCoroutine(Ciblage());
         
         IEnumerator Ciblage(){
+            yield return new WaitForSeconds(1);
+            
+            GameObject raySave = Instantiate(_rayon, spawner);
+            raySave.transform.eulerAngles = new Vector3(0f,0f,angle);
             float maxAngle = Vector2.SignedAngle(Vector2.up, spawner.position - PlayerSingleton.Instance.transform.position) - angle;
             float timer = 0f;
+
 
             while (timer < _rayDuration){
                 float w = maxAngle*_aimingCurve.Evaluate(timer/_rayDuration);
