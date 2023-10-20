@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5690af7f3dd5ec4d9989136c58f5a55, type: 3}
   m_Name: New Enemy Types
   m_EditorClassIdentifier: 
-  _hp: 0
-  _movementType: 3
-  _shoot: 1
-  _projectile: {fileID: 0}
-  _shootDelay: 0
-  _shotSpeed: 0
+  _hp: 3
+  _movementType: 2
+  _shoot: 0
+  _projectile: {fileID: 7062517768860613257, guid: 0aff7ae590da46f44805f97439c5a240, type: 3}
+  _shootDelay: 0.5
+  _shotSpeed: 5
   _sprite: {fileID: -9095717837082945937, guid: bd3cb4af8406d4436a2ae8c2aafe1f8d, type: 3}
   _moveSpeed: 5
-  _rotationSpeed: 0
-  _sineAmplitude: 0
-  _sineFrequency: 0
+  _rotationSpeed: 200
+  _sineAmplitude: 15
+  _sineFrequency: 5
