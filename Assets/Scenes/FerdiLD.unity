@@ -1280,6 +1280,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4340518451257972603, guid: 473b88c8325dd5b40bed09280cc248f2, type: 3}
+      propertyPath: _hp
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2224,12 +2228,16 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4702123150367728478, guid: c826833db3c1bd547909f6433c3f6625, type: 3}
+      propertyPath: _lifeTime
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4702123150367728478, guid: c826833db3c1bd547909f6433c3f6625, type: 3}
       propertyPath: _firePoint
       value: 
       objectReference: {fileID: 1044074590}
     - target: {fileID: 4702123150367728478, guid: c826833db3c1bd547909f6433c3f6625, type: 3}
       propertyPath: _shootDelay
-      value: 0.1
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4702123150367728478, guid: c826833db3c1bd547909f6433c3f6625, type: 3}
       propertyPath: _bulletSpeed
@@ -3749,6 +3757,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 863090984}
     m_Modifications:
+    - target: {fileID: 1005108036817728532, guid: 3ad594ede270550418be093cacff7b6d, type: 3}
+      propertyPath: _hp
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5355126498648240285, guid: 3ad594ede270550418be093cacff7b6d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.03500688

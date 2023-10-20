@@ -550,7 +550,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playScene: FerdiLD
-  _retryScene: FerdiLD
+  _retryScene: mainMenu
   _mainMenuScene: mainMenu
   _pauseMenu: {fileID: 5431693202904651135}
   _gameOverMenu: {fileID: 7632275216256076022}
