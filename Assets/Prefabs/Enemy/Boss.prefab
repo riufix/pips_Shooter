@@ -346,8 +346,8 @@ MonoBehaviour:
   _startAngle: 20
   _rayDuration: 3
   _bulletGen: {fileID: 5953643296088910800}
-  _crabPattern: {fileID: 0}
-  _bubblePattern: {fileID: 0}
+  _crabPattern: {fileID: 11400000, guid: 973ace75d0e2b64448b17297f8e9a090, type: 2}
+  _bubblePattern: {fileID: 11400000, guid: 1a46a27435550f440a960fa2263a2cd3, type: 2}
   _anim: {fileID: 5861028051494558936}
   _rightClawAtkTrigger: RCatkTrigger
   _leftClawAtkTrigger: LCatkTrigger

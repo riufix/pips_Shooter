@@ -59,18 +59,40 @@ public class BossFSM : MonoBehaviour
     }
 
     private void Claws(){
-        //Tire une pince au hasard puis joue la bonne anim
+        if(Random.Range(0,2)==0){
+            _anim.SetTrigger(_leftClawAtkTrigger);
+        }
+        else{
+            _anim.SetTrigger(_rightClawAtkTrigger);
+        }
+        
     }
 
     private void Bubbles(){
-        //Tire les bulles avec le bulletGen et joue la bonne anim
+        _anim.SetTrigger(_bubbleAtkTrigger);
+        StartCoroutine(BubbleCoroutine());
+
+        IEnumerator BubbleCoroutine(){
+            _bulletGen.PlayPattern(_bubblePattern);
+            yield return new WaitForSeconds(1);
+            EndState();
+        }
     }
 
     private void Crabs(){
-        //Spawn les crabes avec le bulletGen
+        _anim.SetTrigger(_crabSpawnTrigger);
+        StartCoroutine(CrabsCoroutine());
+
+        IEnumerator CrabsCoroutine(){
+            _bulletGen.PlayPattern(_crabPattern);
+            yield return new WaitForSeconds(1);
+            EndState();
+        }
     }
 
     private void Ray(){
+        _anim.SetTrigger(_rayAtkTrigger);
+
         Transform spawner = _transformRayons[Random.Range(0, _transformRayons.Count)];
         float angle = _startAngle*Mathf.Sign(spawner.position.x);
 
