@@ -204,7 +204,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: b3966962f4736fe4da8a5bed75674922, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 791de4eec215cd144baae2b5a301a58c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -397,7 +397,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3446899016518738225}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 509dab7786bca5c4c873ac1d4ba2068c, type: 3}
   m_Name: 
@@ -444,6 +444,7 @@ MonoBehaviour:
   _leftClawAtkTrigger: LCatkTrigger
   _bubbleAtkTrigger: BubbleAtkTrigger
   _crabSpawnTrigger: CrabSpawnTrigger
+  _endRayTrigger: EndRay
   _rayAtkTrigger:
   - RayAtkTrigger
   - RayAtkTrigger2
@@ -627,7 +628,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: 31b3f9e64cf5d604fa1e0aefcdf1b8dd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fc0e95c3306c8c243880d173588d0972, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

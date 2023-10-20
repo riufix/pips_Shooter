@@ -118,8 +118,6 @@ public class BossFSM : MonoBehaviour
 
             raySave.transform.eulerAngles = new Vector3(0f,0f,maxAngle + angle);
             Destroy(raySave);
-            yield return new WaitForSeconds(1);
-            EndState();
         }
     }
 
