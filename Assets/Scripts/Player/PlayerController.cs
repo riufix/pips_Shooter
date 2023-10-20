@@ -14,35 +14,26 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] float _speed = 5f;
     [SerializeField] float _lifeTime = 5f;
-    [SerializeField] float _bulletDmg = 2f;
     [SerializeField] float _bulletSpeed = 5f;
+    [SerializeField] float _shootDelay = .5f;
 
-    [SerializeField] bool _isPressed = false;
-
-    [SerializeField] InputActionReference _mouse;
+    [SerializeField] InputActionReference _shoot;
     [SerializeField] InputActionReference _movement;
 
-    
-    // Start is called before the first frame update
+    bool _slowed = false;
+    bool _reloading = false;
+    float _slowForce = 1;
+
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
-
-        _mouse.action.started += OnShoot;
-        _mouse.action.canceled += OnShoot;
-
-        _mouse.action.canceled += OnShootStop;
-
         _movement.action.performed += OnMovement;
         _movement.action.canceled += OnMovement;
+        OnMovement(new());
     }
 
     private void OnDestroy()
     {
-        _mouse.action.started -= OnShoot;
-        _mouse.action.canceled -= OnShoot;
-
-        _mouse.action.canceled -= OnShootStop;
 
         _movement.action.performed -= OnMovement;
         _movement.action.canceled -= OnMovement;
@@ -51,44 +42,42 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (_mouse.action.IsPressed())
+        if (_shoot.action.IsPressed())
         {
-            _isPressed = true;
-            OnShoot(new());
-        }
-        else
-        {
-            _isPressed = false;
-            OnShootStop(new());
+            if(!_reloading){
+                _reloading = true;
+                GameObject newBullet = Instantiate(_bulletprefab, _firePoint.position, transform.rotation);
+                Vector3 forward = newBullet.transform.up;
+                Rigidbody2D bullettrajectory = newBullet.GetComponent<Rigidbody2D>();
+                bullettrajectory.velocity = forward * _bulletSpeed;
+                Destroy(newBullet, _lifeTime);
+                StartCoroutine(Reload());
+            }
         }
     }
 
     private void OnMovement(CallbackContext ctx)
     {
         Vector2 Mov = _movement.action.ReadValue<Vector2>();
-        _rb.velocity = Mov * _speed;
+        _rb.velocity = Mov * _speed + new Vector2(0,3);
+        if (_slowed) _rb.velocity /= _slowForce;
     }   
 
-    private void OnShoot(CallbackContext ctx)
+    IEnumerator Reload()
     {
-
-        StartCoroutine(Shoot());
-    }
-    private void OnShootStop(CallbackContext ctx)
-    {
-        StopCoroutine(Shoot());
+        yield return new WaitForSeconds(_shootDelay);
+        _reloading = false;
     }
 
-    IEnumerator Shoot()
-    {
-        while (_isPressed)
-        {
-            GameObject newBullet = Instantiate(_bulletprefab, _firePoint.position, transform.rotation);
-            Vector3 forward = newBullet.transform.up;
-            Rigidbody2D bullettrajectory = newBullet.GetComponent<Rigidbody2D>();
-            bullettrajectory.velocity = forward * _bulletSpeed;
-            Destroy(newBullet, 3f);
-            yield return new WaitForSeconds(2.5f);
+    private void Slow(float slowForce){
+        _slowed = true;
+        _slowForce = slowForce;
+
+        StartCoroutine(ResetSlow());
+
+        IEnumerator ResetSlow(){
+            yield return new WaitForSeconds(1);
+            _slowed = false;
         }
     }
 }
