@@ -48,6 +48,7 @@ public class EnemyTypes : ScriptableObject
         {
             case MovementType.Straight:
                 Straight(rb);
+                rb.velocity = RotateV2(rb.velocity, Vector2.Angle(-rb.transform.up, rb.transform.up)/180*Mathf.PI);
                 break;
             case MovementType.Still:
                 Still(rb);
@@ -57,9 +58,9 @@ public class EnemyTypes : ScriptableObject
                 break;
             case MovementType.Sinusoid:
                 Sinusoid(rb);
+                rb.velocity = RotateV2(rb.velocity, Vector2.Angle(-rb.transform.up, rb.transform.up)/180*Mathf.PI);
                 break;
         }
-        rb.velocity = RotateV2(rb.velocity, Vector2.Angle(Vector2.down, rb.transform.up)/180*Mathf.PI);
     }
 
     private void Straight(Rigidbody2D rb){
@@ -78,6 +79,7 @@ public class EnemyTypes : ScriptableObject
         rb.angularVelocity = -rotate * _rotationSpeed;
 
         rb.velocity = rb.transform.up * _moveSpeed;
+        Debug.Log(rb.velocity);
     }
 
     private void Sinusoid(Rigidbody2D rb){
