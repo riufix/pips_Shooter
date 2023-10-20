@@ -402,7 +402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509dab7786bca5c4c873ac1d4ba2068c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playlist: 0100000004000000
+  _playlist: 03000000
   _rayon: {fileID: 7815951748449391161, guid: a35dd43b0a5bcfc41929f556c1018609, type: 3}
   _transformRayons:
   - {fileID: 1497017688393782571}
@@ -444,7 +444,6 @@ MonoBehaviour:
   _leftClawAtkTrigger: LCatkTrigger
   _bubbleAtkTrigger: BubbleAtkTrigger
   _crabSpawnTrigger: CrabSpawnTrigger
-  _endRayTrigger: EndRay
   _rayAtkTrigger:
   - RayAtkTrigger
   - RayAtkTrigger2

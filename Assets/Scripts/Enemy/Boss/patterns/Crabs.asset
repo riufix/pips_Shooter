@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a9616e3e3ccec140967bb4328646219, type: 3}
   m_Name: Crabs
   m_EditorClassIdentifier: 
-  _projectile: {fileID: 0}
-  _numberProjectile: 0
-  _projectileSpeed: 0
+  _projectile: {fileID: 6092331479846009992, guid: 9bb8c3bcd93779a4e8fe8f5fe65944e4, type: 3}
+  _numberProjectile: 4
+  _projectileSpeed: 5
   _projectileDelay: 0
-  _projectileAngle: 0
-  _projectileAngleOffset: 0
+  _projectileAngle: 180
+  _projectileAngleOffset: 90
   _compositePattern: []

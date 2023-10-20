@@ -346,11 +346,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7791643519761129878, guid: 9e28bdbfd5ad5674c9962af79dcce195, type: 3}
       propertyPath: _playlist.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7791643519761129878, guid: 9e28bdbfd5ad5674c9962af79dcce195, type: 3}
       propertyPath: _playlist.Array.data[0]
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7791643519761129878, guid: 9e28bdbfd5ad5674c9962af79dcce195, type: 3}
       propertyPath: _playlist.Array.data[1]
