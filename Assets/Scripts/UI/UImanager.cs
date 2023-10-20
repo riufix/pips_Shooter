@@ -8,8 +8,6 @@ using UnityEngine.UI;
 public class UImanager : MonoBehaviour
 {
     [SerializeField, Scene] string _playScene;
-    [SerializeField, Scene] string _retryScene;
-    [SerializeField, Scene] string _mainMenuScene;
     [SerializeField] GameObject _pauseMenu;
     [SerializeField] GameObject _gameOverMenu;
     [SerializeField] bool _canBeActive = false;
@@ -51,11 +49,6 @@ public class UImanager : MonoBehaviour
         SceneManager.LoadScene(_playScene);
     }
 
-    public void retry()
-    {
-        SceneManager.LoadScene(_retryScene);
-    }
-
     public void resume()
     {
         _pauseMenu.SetActive(false);
@@ -65,12 +58,12 @@ public class UImanager : MonoBehaviour
 
     public void mainMenu()
     {
-        SceneManager.LoadScene(_mainMenuScene);
+        SceneManager.LoadScene("mainMenu");
     }
 
     public void quitToMainMenu()
     {
-        SceneManager.LoadScene(_mainMenuScene);
+        SceneManager.LoadScene("mainMenu");
     }
 
     public void quit()
