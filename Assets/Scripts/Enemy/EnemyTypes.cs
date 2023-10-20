@@ -79,7 +79,6 @@ public class EnemyTypes : ScriptableObject
         rb.angularVelocity = -rotate * _rotationSpeed;
 
         rb.velocity = rb.transform.up * _moveSpeed;
-        Debug.Log(rb.velocity);
     }
 
     private void Sinusoid(Rigidbody2D rb){

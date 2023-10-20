@@ -28,11 +28,6 @@ public class PlayerLife : MonoBehaviour
         _lifepercent.text = _life.ToString();
     }
 
-    void Update()
-    {
-        
-    }
-
     public void takeDamage(int amount)
     {
         if (!_isDead)
