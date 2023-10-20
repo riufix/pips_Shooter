@@ -14,38 +14,26 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] float _speed = 5f;
     [SerializeField] float _lifeTime = 5f;
-    [SerializeField] float _bulletDmg = 2f;
     [SerializeField] float _bulletSpeed = 5f;
+    [SerializeField] float _shootDelay = .5f;
 
-    [SerializeField] bool _isPressed = false;
 
     [SerializeField] InputActionReference _shoot;
     [SerializeField] InputActionReference _movement;
 
     bool _slowed = false;
+    bool _reloading = false;
     float _slowForce = 1;
 
-    
-    // Start is called before the first frame update
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
-
-        _shoot.action.started += OnShoot;
-        _shoot.action.canceled += OnShoot;
-
-        _shoot.action.canceled += OnShootStop;
-
         _movement.action.performed += OnMovement;
         _movement.action.canceled += OnMovement;
     }
 
     private void OnDestroy()
     {
-        _shoot.action.started -= OnShoot;
-        _shoot.action.canceled -= OnShoot;
-
-        _shoot.action.canceled -= OnShootStop;
 
         _movement.action.performed -= OnMovement;
         _movement.action.canceled -= OnMovement;
@@ -56,13 +44,15 @@ public class PlayerController : MonoBehaviour
     {
         if (_shoot.action.IsPressed())
         {
-            _isPressed = true;
-            OnShoot(new());
-        }
-        else
-        {
-            _isPressed = false;
-            OnShootStop(new());
+            if(!_reloading){
+                _reloading = true;
+                GameObject newBullet = Instantiate(_bulletprefab, _firePoint.position, transform.rotation);
+                Vector3 forward = newBullet.transform.up;
+                Rigidbody2D bullettrajectory = newBullet.GetComponent<Rigidbody2D>();
+                bullettrajectory.velocity = forward * _bulletSpeed;
+                Destroy(newBullet, _lifeTime);
+                StartCoroutine(Reload());
+            }
         }
     }
 
@@ -73,27 +63,10 @@ public class PlayerController : MonoBehaviour
         if (_slowed) _rb.velocity /= _slowForce;
     }   
 
-    private void OnShoot(CallbackContext ctx)
+    IEnumerator Reload()
     {
-
-        StartCoroutine(Shoot());
-    }
-    private void OnShootStop(CallbackContext ctx)
-    {
-        StopCoroutine(Shoot());
-    }
-
-    IEnumerator Shoot()
-    {
-        while (_isPressed)
-        {
-            GameObject newBullet = Instantiate(_bulletprefab, _firePoint.position, transform.rotation);
-            Vector3 forward = newBullet.transform.up;
-            Rigidbody2D bullettrajectory = newBullet.GetComponent<Rigidbody2D>();
-            bullettrajectory.velocity = forward * _bulletSpeed;
-            Destroy(newBullet, _lifeTime);
-            yield return new WaitForSeconds(2.5f);
-        }
+        yield return new WaitForSeconds(_shootDelay);
+        _reloading = false;
     }
 
     private void Slow(float slowForce){
