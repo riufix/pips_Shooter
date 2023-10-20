@@ -85,13 +85,12 @@ public class EnemyTypes : ScriptableObject
     private void Sinusoid(Rigidbody2D rb){
         _time += Time.deltaTime;
         rb.velocity = new Vector2(Mathf.Cos(_time*_sineFrequency)*_sineAmplitude,_moveSpeed);
-        Debug.Log(rb.velocity); 
     }
 
     private Vector2 RotateV2(Vector2 v, float theta){
         float x = v.x * Mathf.Cos(theta) - v.y * Mathf.Sin(theta);
         float y = v.x * Mathf.Sin(theta) + v.y * Mathf.Cos(theta);
         return new Vector2(x,y);
-    }
+    }   
 
 }
