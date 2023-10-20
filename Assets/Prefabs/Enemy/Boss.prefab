@@ -308,6 +308,7 @@ GameObject:
   - component: {fileID: 6179315500787140211}
   - component: {fileID: 7128182814151468613}
   - component: {fileID: 7791643519761129878}
+  - component: {fileID: 7118959725937147577}
   - component: {fileID: 5953643296088910800}
   - component: {fileID: 5861028051494558936}
   - component: {fileID: 9220987247055480413}
@@ -396,7 +397,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3446899016518738225}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 509dab7786bca5c4c873ac1d4ba2068c, type: 3}
   m_Name: 
@@ -449,6 +450,20 @@ MonoBehaviour:
   - RayAtkTrigger3
   - RayAtkTrigger4
   - RayAtkTrigger5
+--- !u!114 &7118959725937147577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3446899016518738225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f89b8cf2569cdc42a5e24b50c5f5289, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enableRange: 4
+  _camera: {fileID: 0}
 --- !u!114 &5953643296088910800
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -495,6 +510,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1f0a351d73b51b4a9ec641aa6c704de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _hp: 0
   _onDamage:
     m_PersistentCalls:
       m_Calls: []
