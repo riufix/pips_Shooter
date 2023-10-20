@@ -37,7 +37,7 @@ public class EnemyBehaviour : MonoBehaviour
             float angle = Vector3.SignedAngle(Vector3.down, _rb.velocity, Vector3.forward);
             _spriteRenderer.transform.rotation = Quaternion.Euler(0,0,angle);
 
-            Destroy(gameObject, 7);
+            Destroy(gameObject, 15);
         }
         else{
             if(Mathf.Abs(_playerTransform.position.y - transform.position.y) <= _enableRange ){

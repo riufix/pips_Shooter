@@ -10,7 +10,7 @@ public class UImanager : MonoBehaviour
     [SerializeField, Scene] string _playScene;
     [SerializeField] GameObject _pauseMenu;
     [SerializeField] GameObject _gameOverMenu;
-    [SerializeField] bool _canBeActive = false;
+    [SerializeField] bool _canBeActive = true;
 
     /*public static UImanager Instance;
 
@@ -23,13 +23,13 @@ public class UImanager : MonoBehaviour
 
     void Start()
     {
-        _pauseMenu.SetActive(false);
+        _canBeActive = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && !_canBeActive)
+        if (Input.GetKeyDown(KeyCode.Escape) && _canBeActive)
         {
             _pauseMenu.SetActive(true);
             _canBeActive = false;
@@ -47,6 +47,8 @@ public class UImanager : MonoBehaviour
     public void play()
     {
         SceneManager.LoadScene(_playScene);
+        Time.timeScale = 1f;
+        _canBeActive = true;
     }
 
     public void resume()
